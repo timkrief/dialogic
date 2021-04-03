@@ -1,6 +1,7 @@
 tool
 extends Control
 
+var editor_scale = 1
 var debug_mode: bool = true # For printing info
 var editor_file_dialog # EditorFileDialog
 var file_picker_data: Dictionary = {'method': '', 'node': self}

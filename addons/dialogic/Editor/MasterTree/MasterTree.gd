@@ -10,7 +10,7 @@ onready var theme_editor = get_node('../ThemeEditor')
 onready var empty_editor = get_node('../Empty')
 
 onready var tree = self
-var timeline_icon = load("res://addons/dialogic/Images/timeline.svg")
+var timeline_icon = load("res://addons/dialogic/Images/Resources/timeline.svg")
 var character_icon = load("res://addons/dialogic/Images/character.svg")
 var theme_icon = load("res://addons/dialogic/Images/Resources/theme.svg")
 var definition_icon = load("res://addons/dialogic/Images/Resources/definition.svg")
@@ -99,6 +99,9 @@ func build_timelines(selected_item: String=''):
 func _add_timeline(timeline, select = false):
 	var item = tree.create_item(timelines_tree)
 	item.set_icon(0, timeline_icon)
+	
+	item.set_icon_max_width(0, 16 * editor_reference.editor_scale)
+	
 	if timeline.has('name'):
 		item.set_text(0, timeline['name'])
 	else:
