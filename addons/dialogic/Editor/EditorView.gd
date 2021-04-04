@@ -40,18 +40,6 @@ func _ready():
 		$ToolBar/NewDefinitionButton,
 		$ToolBar/NewThemeButton,
 	]
-	for tb in toolbar_buttons:
-		#tb.expand_icon = true
-		#tb.text = ' asdasdas'
-		#tb.set_deferred('rect_size', Vector2(16 * scale, 16 * scale))
-		#tb.set_deferred('rect_min_size', Vector2(16 * scale, 16 * scale))
-		tb.rect_size = Vector2(16 * scale, 16 * scale)
-		tb.rect_min_size = Vector2(16 * scale, 16 * scale)
-		#print(tb.rect_size)
-	
-	$ToolBar/TestButton.rect_size = Vector2(16 * scale, 16 * scale)
-	$ToolBar/TestButton.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT
-	print($ToolBar/TestButton.rect_size)
 
 	$ToolBar/NewTimelineButton.icon = preload("res://addons/dialogic/Images/Toolbar/add-timeline.svg")
 	$ToolBar/NewCharactersButton.icon = preload("res://addons/dialogic/Images/Toolbar/add-character.svg")
