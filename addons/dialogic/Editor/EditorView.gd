@@ -27,7 +27,39 @@ func _ready():
 
 	master_tree.connect("editor_selected", self, 'on_master_tree_editor_selected')
 
-	# Toolbar
+	# Adjusting element sizes
+	var scale = get_editor_scale()
+	$MainPanel.margin_top = 30 * scale
+	$ToolBar.rect_min_size.y = 30 * scale
+
+	
+	# Toolbar icons
+	var toolbar_buttons = [
+		$ToolBar/NewTimelineButton,
+		$ToolBar/NewCharactersButton,
+		$ToolBar/NewDefinitionButton,
+		$ToolBar/NewThemeButton,
+	]
+	for tb in toolbar_buttons:
+		#tb.expand_icon = true
+		#tb.text = ' asdasdas'
+		#tb.set_deferred('rect_size', Vector2(16 * scale, 16 * scale))
+		#tb.set_deferred('rect_min_size', Vector2(16 * scale, 16 * scale))
+		tb.rect_size = Vector2(16 * scale, 16 * scale)
+		tb.rect_min_size = Vector2(16 * scale, 16 * scale)
+		#print(tb.rect_size)
+	
+	$ToolBar/TestButton.rect_size = Vector2(16 * scale, 16 * scale)
+	$ToolBar/TestButton.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT
+	print($ToolBar/TestButton.rect_size)
+
+	$ToolBar/NewTimelineButton.icon = preload("res://addons/dialogic/Images/Toolbar/add-timeline.svg")
+	$ToolBar/NewCharactersButton.icon = preload("res://addons/dialogic/Images/Toolbar/add-character.svg")
+	$ToolBar/NewDefinitionButton.icon = preload("res://addons/dialogic/Images/Toolbar/add-definition.svg")
+	$ToolBar/NewThemeButton.icon = preload("res://addons/dialogic/Images/Toolbar/add-theme.svg")
+
+	
+	# Toolbar signals
 	$ToolBar/NewTimelineButton.connect('pressed', $MainPanel/TimelineEditor, 'new_timeline')
 	$ToolBar/NewCharactersButton.connect('pressed', $MainPanel/CharacterEditor, 'new_character')
 	$ToolBar/NewThemeButton.connect('pressed', $MainPanel/ThemeEditor, 'new_theme')
