@@ -11,7 +11,7 @@ onready var empty_editor = get_node('../Empty')
 
 onready var tree = self
 var timeline_icon = load("res://addons/dialogic/Images/Resources/timeline.svg")
-var character_icon = load("res://addons/dialogic/Images/character.svg")
+var character_icon = load("res://addons/dialogic/Images/Resources/character.svg")
 var theme_icon = load("res://addons/dialogic/Images/Resources/theme.svg")
 var definition_icon = load("res://addons/dialogic/Images/Resources/definition.svg")
 var glossary_icon = load("res://addons/dialogic/Images/Resources/glossary.svg")
@@ -100,7 +100,7 @@ func _add_timeline(timeline, select = false):
 	var item = tree.create_item(timelines_tree)
 	item.set_icon(0, timeline_icon)
 	
-	item.set_icon_max_width(0, 16 * editor_reference.editor_scale)
+	item.set_icon_max_width(0, 16 * editor_reference.get_editor_scale())
 	
 	if timeline.has('name'):
 		item.set_text(0, timeline['name'])
@@ -124,6 +124,7 @@ func build_themes(selected_item: String=''):
 func _add_theme(theme_item, select = false):
 	var item = tree.create_item(themes_tree)
 	item.set_icon(0, theme_icon)
+	item.set_icon_max_width(0, 16 * editor_reference.get_editor_scale())
 	item.set_text(0, theme_item['name'])
 	theme_item['editor'] = 'Theme'
 	item.set_metadata(0, theme_item)
@@ -142,6 +143,7 @@ func build_characters(selected_item: String=''):
 func _add_character(character, select = false):
 	var item = tree.create_item(characters_tree)
 	item.set_icon(0, character_icon)
+	item.set_icon_max_width(0, 16 * editor_reference.get_editor_scale())
 	if character.has('name'):
 		item.set_text(0, character['name'])
 	else:
@@ -170,6 +172,7 @@ func _add_definition(definition, select = false):
 		item.set_icon(0, glossary_icon)
 	definition['editor'] = 'Definition'
 	item.set_metadata(0, definition)
+	item.set_icon_max_width(0, 16 * editor_reference.get_editor_scale())
 	if not get_constant("dark_theme", "Editor"):
 		item.set_icon_modulate(0, get_color("property_color", "Editor"))
 	if select: # Auto selecting
