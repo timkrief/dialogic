@@ -17,7 +17,6 @@ onready var settings_editor = $MainPanel/SettingsEditor
 
 func _ready():
 	editor_scale = get_editor_scale()
-
 	# Adding file dialog to get used by pieces
 	editor_file_dialog = EditorFileDialog.new()
 	add_child(editor_file_dialog)
@@ -175,20 +174,4 @@ func get_editor_scale():
 	# This will be replaced once the variable gets exposed to gdscript. 
 	# pycbouh [Жыве Беларусь!] told me on discord that a PR is comming.
 	var _scale = get_constant("inspector_margin", "Editor")
-	var result = 1
-	
-	match _scale:
-		6:
-			result = 0.75
-		8:
-			result = 1;
-		10: 
-			result = 1.25
-		12: 
-			result = 1.5
-		14:
-			result = 1.75
-		16:
-			result = 2
-
-	return result
+	return _scale * 0.125
